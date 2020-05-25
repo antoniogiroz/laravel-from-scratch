@@ -34,6 +34,11 @@
                 <td>
                     <a class="btn btn-link" href="{{ route('products.show', $product->id) }}">View</a>
                     <a class="btn btn-link" href="{{ route('products.edit', $product->id) }}">Edit</a>
+                    <form method="POST" action="{{ route('products.destroy', $product->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-link">Remove</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
