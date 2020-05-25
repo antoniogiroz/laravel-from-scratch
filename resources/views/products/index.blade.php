@@ -3,6 +3,8 @@
 @section('content')
 <h1>List of products</h1>
 
+<a class="btn btn-primary" href="{{ route('products.create') }}">New product</a>
+
 @empty($products)
 <div class="alert alert-warning">
     The product list is empty
@@ -17,6 +19,7 @@
             <th>Price</th>
             <th>Stock</th>
             <th>Status</th>
+            <th>Actions</th>
         </thead>
 
         <tbody>
@@ -28,6 +31,10 @@
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->stock }}</td>
                 <td>{{ $product->status }}</td>
+                <td>
+                    <a class="btn btn-link" href="{{ route('products.show', $product->id) }}">View</a>
+                    <a class="btn btn-link" href="{{ route('products.edit', $product->id) }}">Edit</a>
+                </td>
             </tr>
             @endforeach
         </tbody>
