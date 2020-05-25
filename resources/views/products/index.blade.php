@@ -1,3 +1,6 @@
+@extends('layouts.master')
+
+@section('content')
 <h1>List of products</h1>
 
 @empty($products)
@@ -31,3 +34,4 @@
     </table>
 </div>
 @endempty
+@endsection
