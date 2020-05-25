@@ -28,17 +28,25 @@ class ProductController extends Controller
 
     public function store()
     {
-        //
+        $product = Product::create(request()->all());
+
+        return $product;
     }
 
-    public function edit($product)
+    public function edit($productId)
     {
-        return view('products.edit');
+        $product = Product::findOrFail($productId);
+
+        return view('products.edit', compact('product'));
     }
 
-    public function update($product)
+    public function update($productId)
     {
-        //
+        $product = Product::findOrFail($productId);
+
+        $product->update(request()->all());
+
+        return $product;
     }
 
     public function destroy($product)
