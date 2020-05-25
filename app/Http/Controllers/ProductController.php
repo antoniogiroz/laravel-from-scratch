@@ -14,10 +14,8 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
 
-    public function show($productId)
+    public function show(Product $product)
     {
-        $product = Product::findOrFail($productId);
-
         return view('products.show', compact('product'));
     }
 
@@ -33,26 +31,20 @@ class ProductController extends Controller
         return $product;
     }
 
-    public function edit($productId)
+    public function edit(Product $product)
     {
-        $product = Product::findOrFail($productId);
-
         return view('products.edit', compact('product'));
     }
 
-    public function update($productId)
+    public function update(Product $product)
     {
-        $product = Product::findOrFail($productId);
-
         $product->update(request()->all());
 
         return $product;
     }
 
-    public function destroy($productId)
+    public function destroy(Product $product)
     {
-        $product = Product::findOrFail($productId);
-
         $product->delete();
 
         return $product;
