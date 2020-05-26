@@ -36,7 +36,9 @@ class ProductController extends Controller
 
         $product = Product::create(request()->all());
 
-        return redirect()->route('products.index');
+        return redirect()
+            ->route('products.index')
+            ->withSuccess('The new product was create successfully');
     }
 
     public function edit(Product $product)
@@ -56,7 +58,9 @@ class ProductController extends Controller
 
         $product->update(request()->all());
 
-        return redirect()->route('products.index');
+        return redirect()
+            ->route('products.index')
+            ->withSuccess('The product was updated successfully');
     }
 
     public function destroy(Product $product)
