@@ -28,7 +28,7 @@ class ProductController extends Controller
     {
         $product = Product::create(request()->all());
 
-        return $product;
+        return redirect()->route('products.index');
     }
 
     public function edit(Product $product)
@@ -40,13 +40,13 @@ class ProductController extends Controller
     {
         $product->update(request()->all());
 
-        return $product;
+        return redirect()->route('products.index');
     }
 
     public function destroy(Product $product)
     {
         $product->delete();
 
-        return $product;
+        return redirect()->route('products.index');
     }
 }
