@@ -26,6 +26,14 @@ class ProductController extends Controller
 
     public function store()
     {
+        request()->validate([
+            'title' => 'required|max:255',
+            'description' => 'required|max:255',
+            'price' => 'required|min:1',
+            'stock' => 'required|min:1',
+            'status' => 'in:available,unavailable',
+        ]);
+
         $product = Product::create(request()->all());
 
         return redirect()->route('products.index');
@@ -38,6 +46,14 @@ class ProductController extends Controller
 
     public function update(Product $product)
     {
+        request()->validate([
+            'title' => 'required|max:255',
+            'description' => 'required|max:255',
+            'price' => 'required|min:1',
+            'stock' => 'required|min:1',
+            'status' => 'in:available,unavailable',
+        ]);
+
         $product->update(request()->all());
 
         return redirect()->route('products.index');
