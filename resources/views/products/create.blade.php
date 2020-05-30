@@ -4,31 +4,60 @@
 <h1>Create a product</h1>
 <form method="POST" action="{{ route('products.store') }}">
     @csrf
-    <div class="form-row">
+    <div class="form-row mb-3">
         <label for="title">Title</label>
-        <input class="form-control" type="text" name="title" value="{{ old('title') }}">
+        <input class="form-control @error('title') is-invalid @enderror" type="text" name="title"
+            value="{{ old('title') }}">
+        @error('title')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+        @enderror
     </div>
-    <div class="form-row">
+    <div class="form-row mb-3">
         <label for="description">Description</label>
-        <textarea class="form-control" name="description" rows="10" value="{{ old('description') }}"></textarea>
+        <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="10"
+            value="{{ old('description') }}"></textarea>
+        @error('description')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+        @enderror
     </div>
-    <div class="form-row">
+    <div class="form-row mb-3">
         <label for="price">Price</label>
-        <input class="form-control" type="number" name="price" min="1.00" step="0.01" value="{{ old('price') }}">
+        <input class="form-control @error('price') is-invalid @enderror" type="number" name="price" min="1.00"
+            step="0.01" value="{{ old('price') }}">
+        @error('price')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+        @enderror
     </div>
-    <div class="form-row">
+    <div class="form-row mb-3">
         <label for="stock">Stock</label>
-        <input class="form-control" type="number" name="stock" min="0" value="{{ old('stock') }}">
+        <input class="form-control @error('stock') is-invalid @enderror" type="number" name="stock" min="0"
+            value="{{ old('stock') }}">
+        @error('stock')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+        @enderror
     </div>
-    <div class="form-row">
+    <div class="form-row mb-3">
         <label for="status">Status</label>
-        <select class="custom-select" name="status">
+        <select class="custom-select @error('status') is-invalid @enderror" name="status">
             <option {{ old('status') == 'unavailable' ? 'selected' : '' }} value="unavailable" selected>Unavailable
             </option>
             <option {{ old('status') == 'available' ? 'selected' : '' }} value="available">Available</option>
         </select>
+        @error('status')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+        @enderror
     </div>
-    <div class="form-row mt-3">
+    <div class="form-row">
         <button class="btn btn-primary">Save</button>
     </div>
 </form>
