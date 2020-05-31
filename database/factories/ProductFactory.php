@@ -11,6 +11,6 @@ $factory->define(Product::class, function (Faker $faker) {
         'description' => $faker->paragraph(1),
         'price' => $faker->randomFloat($maxDecimals = 2, $min = 3, $max = 100),
         'stock' => $faker->numberBetween(1, 10),
-        'status' => $faker->randomElement(['available', 'unavailable'])
+        'status' => $faker->randomElement(['available', 'unavailable']),
     ];
 });
